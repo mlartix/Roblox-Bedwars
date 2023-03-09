@@ -94,7 +94,7 @@ end)
 game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
     
-    if input.KeyCode == Enum.KeyCode[_G.Keybind] then
+    if input.KeyCode == Enum.KeyCode[string.upper(_G.Keybind)] then
         if _G.toggle then
            _G.toggle = false
         else
