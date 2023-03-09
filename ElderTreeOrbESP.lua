@@ -92,7 +92,7 @@ workspace.ChildAdded:Connect(function(child)
 end)
 
 game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
-    if gameProcessed then return end
+    --if gameProcessed then return end
     
     if input.KeyCode == Enum.KeyCode[string.upper(_G.Keybind)] then
         if _G.toggle then
