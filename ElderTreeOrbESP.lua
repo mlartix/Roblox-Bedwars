@@ -69,16 +69,19 @@ end
 
 
 for _,v in pairs(workspace:GetChildren()) do 
-    if v:IsA("Model") and v.Name == "TreeOrb" and v:FindFirstChild("Spirit") and v.Spirit:IsA("Part") then
-        ESP(v.Spirit, tostring(v.Name))
+    if v:IsA("Model") and string.find(v.Name:lower(), "treeorb") then
+        ESP(v.PrimaryPart, tostring(v.Name))
     end
 end
 
 
 workspace.ChildAdded:Connect(function(child)
-    if child:IsA("Model") and child.Name == "TreeOrb"  then
-        local treeOrbPart = child:WaitForChild("Spirit")
-        ESP(treeOrbPart, tostring(child.Name))
+    if child:IsA("Model") and string.find(child.Name:lower(), "treeorb") then
+        if not child.PrimaryPart then
+            child:GetPropertyChangedSignal("PrimaryPart"):Wait()
+        end
+        
+        ESP(child.PrimaryPart, tostring(child.Name))
     end
 end)
 
